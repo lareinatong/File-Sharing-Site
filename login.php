@@ -19,14 +19,13 @@ if($_POST){
         $array = explode(',', $row);
         //判断用户名密码是否正确,trim(string)移除字符串两侧的空白字符或其他预定义字符。
         if (($array[0] == $_POST['username']) && (trim($array[1]) == $_POST['password'])) {
-            $_SESSION['username'] = $_POST['username'];
-            echo $_SESSION['username'];
+            $_SESSION[htmlentities('username')] = $_POST['username'];
+
             echo $_POST['username'];
-            print('log in successfully,Back to the main page in 5 seconds ');
+            print(' log in successfully,Back to the main page in 5 seconds ');
             header("refresh:5;url=./mainpage.php");
             exit();
         }
-
     }
 
     echo('Your username or password was incorrect. Please try again.');
